@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // Import useRouter
+import { useRouter } from "next/navigation";
 
 const AdminLoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter(); // Initialize useRouter
+  const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ const AdminLoginPage = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ "email_id":username, "password":password }),
+        body: JSON.stringify({ email_id: username, password: password }),
       });
 
       if (!response.ok) {
@@ -27,12 +27,9 @@ const AdminLoginPage = () => {
 
       const data = await response.json();
       const accessToken = data.access_token;
-
-      // Store the access token in local storage
       localStorage.setItem("adminAccessToken", accessToken);
-
       alert("Login successful!");
-      // Redirect to admin/dashboard
+
       router.push("/admin/dashboard");
     } catch (err: any) {
       setError(err.message || "An error occurred during login.");
@@ -40,8 +37,13 @@ const AdminLoginPage = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen flex justify-center items-center">
-      <div className="max-w-md w-full p-6 border border-black rounded-md bg-white text-center">
+    <div
+      className="h-screen w-screen bg-cover bg-center flex justify-center items-center"
+      style={{
+        backgroundImage: "url('./images/bg.jpg')",
+      }}
+    >
+      <div className="max-w-md w-full p-6 border border-black rounded-md bg-white bg-opacity-90 text-center">
         <h1 className="text-black text-2xl font-bold mb-6">Admin Login</h1>
         <form onSubmit={handleLogin}>
           <div className="mb-4 text-left">
