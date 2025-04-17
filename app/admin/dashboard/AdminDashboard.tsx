@@ -68,7 +68,7 @@ const AdminDashboard = () => {
         <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between w-full">
           <div>
             <h1 className="text-5xl font-bold text-white">Welcome to Mastodon GPT</h1>
-            <p className="text-md text-white mt-1">Subtitle</p>
+            <p className="text-md text-white mt-1">Admin</p>
           </div>
           <div className="mt-4 md:mt-0 flex gap-3">
             <button
